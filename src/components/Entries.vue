@@ -5,10 +5,10 @@ import fungiJournalAPIClient from "../client/fungiJournalAPIClient";
 export default {
   data () {
     return {
-      users: null,
+      entries: null,
     }
   },
   async created () {
-    console.log(await fungiJournalAPIClient.getEntries());
+    entries = await fungiJournalAPIClient.getEntries();
   }
 }</script>

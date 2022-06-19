@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import sut from "../../../client/fungiJournalAPIClient";
+import sut from "../../client/fungiJournalAPIClient";
 
 // describe("fungiJournalAPIClient")
 test("ifEntriesGetImported", async () => {
