@@ -9,7 +9,7 @@ export default defineConfig({
     {
       template: {
         compilerOptions: {
-          isCustomElement: (tag) => tag.includes("Entries")
+          isCustomElement: (tag) => tag.includes("entries")
         }
       }
     }

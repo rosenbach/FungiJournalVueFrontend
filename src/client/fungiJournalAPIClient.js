@@ -4,15 +4,8 @@ const getEntries = async () => {
     return data;
 }
 
-const getEntry = async (id) => {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-}
-
 const fungiJournalAPIClient = {
-    getEntries,
-    getEntry
+    getEntries
 }
 
 export default fungiJournalAPIClient;
