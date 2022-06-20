@@ -18,17 +18,17 @@ export default {
     methods:{
         ViewDate(date){
             return EntryMapper.createViewDate(date);
-        },
-        deleteEntry(){
-            console.log("ye");
         }
     }
 }
 </script>
 
 <template>
+<li>
         <div class="card entry-card">
+        <button @click="$emit('delete-entry')">Delete me!</button>
           <p class="card-icon">📝</p> 
+
           <table>
             <tr><td class="card-label">EntryId:</td><td> {{ entryId }}</td></tr>
             <tr><td class="card-label">CreatedAt:</td><td> {{ViewDate(createdAt)}}</td></tr>
@@ -40,6 +40,7 @@ export default {
             <tr><td class="card-label">Description:</td><td> {{ description }}</td></tr>
           </table>
     </div>
+    </li>
 </template>
 
 <style scoped>
