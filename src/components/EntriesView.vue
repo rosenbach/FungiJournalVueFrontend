@@ -1,5 +1,5 @@
 FungiJournalAPIClient<script>
-import FungiJournalAPIClient from "../client/FungiJournalAPIClient";
+import fungiJournalAPIClient from "../client/FungiJournalAPIClient";
 import Entry from "./Entry.vue";
 
 export default {
@@ -10,15 +10,22 @@ export default {
         };
     },
     methods:{
-        deleteThisEntry: (entryToDelete, entries) => {
+        async deleteThisEntry(entryToDelete, entries) {
           entries.splice(entries.indexOf(entryToDelete), 1);
+         
+          const response = await fetch("https://localhost:7038/Entries/" + entryToDelete.entryId, {
+              method: 'DELETE'
+          });
+          const data = await response.json();
+          return data;
         }
     },
     async created() {
-        await FungiJournalAPIClient.getEntries()
+        await fungiJournalAPIClient.getEntries()
             .then(data => this.entries = data);
     },
-    components: { Entry }
+    components: { Entry,
+    fungiJournalAPIClient }
 }
 </script>
 
