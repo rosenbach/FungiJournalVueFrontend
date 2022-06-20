@@ -4,8 +4,8 @@ const getEntries = async () => {
     return data;
 }
 
-const fungiJournalAPIClient = {
+const FungiJournalAPIClient = {
     getEntries
 }
 
-export default fungiJournalAPIClient;
+export default FungiJournalAPIClient;

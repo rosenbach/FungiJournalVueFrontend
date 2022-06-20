@@ -1,5 +1,6 @@
 <script>
 import FungiItem from "./FungiItem.vue";
+import EntryMapper from "../services/EntryMapper.js";
 
 export default {
     name: "entry",
@@ -13,6 +14,14 @@ export default {
     },
     components:{
         FungiItem
+    },
+    methods:{
+        ViewDate(date){
+            return EntryMapper.createViewDate(date);
+        },
+        deleteEntry(){
+            console.log("ye");
+        }
     }
 }
 </script>
@@ -22,8 +31,8 @@ export default {
           <p class="card-icon">📝</p> 
           <table>
             <tr><td class="card-label">EntryId:</td><td> {{ entryId }}</td></tr>
-            <tr><td class="card-label">CreatedAt:</td><td> {{ createdAt }}</td></tr>
-            <tr><td class="card-label">LastModified:</td><td> {{ lastModified }}</td></tr>
+            <tr><td class="card-label">CreatedAt:</td><td> {{ViewDate(createdAt)}}</td></tr>
+            <tr><td class="card-label">LastModified:</td><td> {{ViewDate(lastModified)}}</td></tr>
             <tr><td class="card-label">FungiId:</td><td> {{ fungiId }}</td></tr>
             <tr><td class="card-label">Fungi:</td><td>
                 <fungi-item v-bind="fungi"/>
