@@ -1,4 +1,5 @@
 <script>
+import FungiItem from "./FungiItem.vue";
 
 export default {
     name: "entry",
@@ -7,7 +8,11 @@ export default {
         createdAt:String,
         lastModified:String,
         fungiId:Number,
+        fungi:Object,
         description:String
+    },
+    components:{
+        FungiItem
     }
 }
 </script>
@@ -20,6 +25,9 @@ export default {
             <tr><td class="card-label">CreatedAt:</td><td> {{ createdAt }}</td></tr>
             <tr><td class="card-label">LastModified:</td><td> {{ lastModified }}</td></tr>
             <tr><td class="card-label">FungiId:</td><td> {{ fungiId }}</td></tr>
+            <tr><td class="card-label">Fungi:</td><td>
+                <fungi-item v-bind="fungi"/>
+            </td></tr>
             <tr><td class="card-label">Description:</td><td> {{ description }}</td></tr>
           </table>
     </div>
