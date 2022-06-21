@@ -43,7 +43,6 @@ body{
 
     .card-icon{
         margin-left:0.8em;
-        width:10em;
         display:inline-block;
     }
 

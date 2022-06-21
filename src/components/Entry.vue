@@ -27,15 +27,11 @@ export default {
 <li>
         <div class="card entry-card">
             <div class="card-navbar">
-                <span class="card-icon"><h3>📝 Entry {{entryId}}</h3></span> 
+                <span class="card-icon"><h3>📝 Entry {{entryId}}, Created at: {{ViewDate(createdAt)}}, Last Modified at: {{ViewDate(lastModified)}}</h3></span> 
                 <button @click="$emit('delete-entry')">❌</button>
             </div>
         <div class="card-content">
           <table>
-            <tr><td class="card-label">EntryId:</td><td> {{ entryId }}</td></tr>
-            <tr><td class="card-label">CreatedAt:</td><td> {{ViewDate(createdAt)}}</td></tr>
-            <tr><td class="card-label">LastModified:</td><td> {{ViewDate(lastModified)}}</td></tr>
-            <tr><td class="card-label">FungiId:</td><td> {{ fungiId }}</td></tr>
             <tr><td class="card-label">Fungi:</td><td>
                 <fungi-item v-bind="fungi"/>
             </td></tr>

@@ -10,20 +10,12 @@ export default {
     foodValue:Number,
     occurrence:String
   },
-  data(){
-    return{
-      btnClicked:false
-    }
-  },
   methods:{
         clickBtn(){
           console.log(this);
-          this.btnClicked = true;
         }
-
   }
 }
-
 </script>
 
 <template>
@@ -31,11 +23,10 @@ export default {
           <div class="card-navbar">
                 <span class="card-icon"><h3>🍄 Fungi {{fungiId}}</h3></span> 
                 <button >❌</button>
-                <button @click="clickBtn()" ref="el">🌂</button>
+                <button @click="clickBtn()">🌂</button>
           </div>
           <div class="card-content">
           <table>
-            <tr><td class="card-label">Id:</td><td> {{ fungiId }}</td></tr>
             <tr><td class="card-label">Name:</td><td> {{ name }}</td></tr>
             <tr><td class="card-label">LatinName:</td><td> {{ latinName }}</td></tr>
             <tr><td class="card-label">Season:</td><td> {{ season }}</td></tr>
