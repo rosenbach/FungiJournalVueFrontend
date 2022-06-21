@@ -11,8 +11,10 @@ export default {
     },
     methods:{
         async deleteThisEntry(entryToDelete, entries) {
-          entries.splice(entries.indexOf(entryToDelete), 1);
-         
+            entries.splice(entries.indexOf(entryToDelete), 1);
+            await this.deleteInDatabase(entryToDelete);
+        },
+        async deleteInDatabase(entryToDelete){
           const response = await fetch("https://localhost:7038/Entries/" + entryToDelete.entryId, {
               method: 'DELETE'
           });
