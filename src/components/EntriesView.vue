@@ -1,5 +1,5 @@
 FungiJournalAPIClient<script>
-import FungiJournalAPIClient from "../client/FungiJournalAPIClient";
+import fungiJournalAPIClient from "../client/FungiJournalAPIClient";
 import Entry from "./Entry.vue";
 
 export default {
@@ -9,19 +9,31 @@ export default {
             entries: null,
         };
     },
+    methods:{
+        async deleteThisEntry(entryToDelete, entries) {
+            entries.splice(entries.indexOf(entryToDelete), 1);
+            await this.deleteInDatabase(entryToDelete);
+        },
+        async deleteInDatabase(entryToDelete){
+          const response = await fetch("https://localhost:7038/Entries/" + entryToDelete.entryId, {
+              method: 'DELETE'
+          });
+          const data = await response.json();
+          return data;
+        }
+    },
     async created() {
-        await FungiJournalAPIClient.getEntries()
+        await fungiJournalAPIClient.getEntries()
             .then(data => this.entries = data);
     },
-    components: { Entry }
+    components: { Entry,
+    fungiJournalAPIClient }
 }
 </script>
 
 <template>
   <h3>My Entries</h3>
   <ol style="list-style-type:none">
-    <li v-for="entry in entries" v-on:delete-row="deleteThisRow(entry)" :key="entry.entryId">
-      <Entry v-bind="entry"/>
-    </li>
+      <Entry v-for="entry in entries" :key="entry.entryId" v-on:delete-entry="deleteThisEntry(entry, entries)" v-bind="entry"/>
   </ol>
 </template>

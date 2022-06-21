@@ -4,6 +4,7 @@ const getEntries = async () => {
     return data;
 }
 
+
 const FungiJournalAPIClient = {
     getEntries
 }
