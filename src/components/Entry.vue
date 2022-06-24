@@ -32,10 +32,10 @@ export default {
             </div>
         <div class="card-content">
           <table>
+              <tr><td class="card-label">Description:</td><td> {{ description }}</td></tr>
             <tr><td class="card-label">Fungi:</td><td>
                 <fungi-item v-bind="fungi"/>
             </td></tr>
-            <tr><td class="card-label">Description:</td><td> {{ description }}</td></tr>
           </table>
           </div>
     </div>

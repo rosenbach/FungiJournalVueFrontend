@@ -75,6 +75,8 @@ body{
 
     button:hover{
         border: 3px solid;
+        cursor: pointer;
+        /* box-shadow: 3px 3px, inset 0 0 0.4em; */
     }
     .entry-card{
         background-color:antiquewhite;
