@@ -44,6 +44,7 @@ export default {
 
 <style scoped>
 
+
 .entry-card{
     background-color:rgb(227, 227, 255);
 }

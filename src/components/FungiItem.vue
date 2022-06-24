@@ -1,6 +1,13 @@
 <!-- FungiItem.vue -->
 <script>
+
 export default {
+  data(){
+    return {
+      isActive : false,
+      buttonText : "🌂"
+    }
+  },
   props: {
     fungi:Object,
     fungiId:Number,
@@ -11,8 +18,14 @@ export default {
     occurrence:String
   },
   methods:{
-        clickBtn(){
-          console.log(this);
+        collapseFungiItem(){
+          if(this.isActive){
+            this.isActive = false;
+            this.buttonText = "🌂";
+          }else{
+            this.isActive = true;
+            this.buttonText = "☂️";
+          }
         }
   }
 }
@@ -20,12 +33,11 @@ export default {
 
 <template>
         <div class="card fungi-card">
-          <div class="card-navbar">
-                <span class="card-icon"><h3>🍄 Fungi {{fungiId}}</h3></span> 
-                <button >❌</button>
-                <button @click="clickBtn()">🌂</button>
+          <div class="card-navbar" :class="{ hide: isActive }">
+            <button @click="collapseFungiItem()">{{buttonText}}</button>
+            <span class="card-icon"><h3>🍄 Fungi {{fungiId}}</h3></span> 
           </div>
-          <div class="card-content">
+          <div class="card-content" :class="{ hide: isActive }">
           <table>
             <tr><td class="card-label">Name:</td><td> {{ name }}</td></tr>
             <tr><td class="card-label">LatinName:</td><td> {{ latinName }}</td></tr>
@@ -38,6 +50,23 @@ export default {
 </template>
 
 <style scoped>
+.card-navbar.hide{
+  box-shadow: none;
+  border-bottom-left-radius: 0.5em;
+  border-bottom-right-radius: 0.5em;
+  border-bottom:none;
+}
+
+.card-content.hide{
+  display:none;
+}
+
+
+button{
+    float:left;
+    margin-left:0.6em;
+}
+
 
 .fungi-card > .card-content .hide {
   display:none;
@@ -53,5 +82,9 @@ export default {
 
 .card-navbar{
     background-color:rgb(253, 153, 144);
+}
+
+h3{
+  margin-right:1em;
 }
 </style>
