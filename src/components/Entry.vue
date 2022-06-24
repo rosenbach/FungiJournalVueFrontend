@@ -26,48 +26,29 @@ export default {
 <template>
 <li>
         <div class="card entry-card">
-        <button @click="$emit('delete-entry')">❌</button>
-          <p class="card-icon">📝</p> 
-
+            <div class="card-navbar">
+                <span class="card-icon"><h3>📝 Entry {{entryId}}, Created at: {{ViewDate(createdAt)}}, Last Modified at: {{ViewDate(lastModified)}}</h3></span> 
+                <button @click="$emit('delete-entry')">❌</button>
+            </div>
+        <div class="card-content">
           <table>
-            <tr><td class="card-label">EntryId:</td><td> {{ entryId }}</td></tr>
-            <tr><td class="card-label">CreatedAt:</td><td> {{ViewDate(createdAt)}}</td></tr>
-            <tr><td class="card-label">LastModified:</td><td> {{ViewDate(lastModified)}}</td></tr>
-            <tr><td class="card-label">FungiId:</td><td> {{ fungiId }}</td></tr>
+              <tr><td class="card-label">Description:</td><td> {{ description }}</td></tr>
             <tr><td class="card-label">Fungi:</td><td>
                 <fungi-item v-bind="fungi"/>
             </td></tr>
-            <tr><td class="card-label">Description:</td><td> {{ description }}</td></tr>
           </table>
+          </div>
     </div>
     </li>
 </template>
 
 <style scoped>
-    button {
-        transition: all 100ms ease-in-out;
-        background-color: white;
-        border-radius: 50%;
-        width:2.7em;
-        height:2.7em;
-        border: 2px solid;
-        border-radius: 0.5em;
-        box-shadow: 3px 3px;
-        position:relative;
-    }
 
-    button:active{
-        background-color:blue;
-        box-shadow: 0px 0px;
-        position:relative;
-        top:3px;
-        left:3px;
-    }
 
-    button:hover{
-        border: 3px solid;
-    }
-    .entry-card{
-        background-color:antiquewhite;
+.entry-card{
+    background-color:rgb(227, 227, 255);
+}
+    .card-navbar{
+    background-color:rgb(194, 194, 255);
     }
 </style>
