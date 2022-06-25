@@ -17,11 +17,12 @@ export default {
 
 .card-label {
   font-weight: bold;
+  display:inline-block;
+  vertical-align:top;
 }
 
 .card {
   text-align: left;
-  margin: 1em;
   border: 2px solid;
   border-radius: 0.5em;
   box-shadow: 5px 10px;
@@ -43,6 +44,7 @@ body{
 
     .card-icon{
         margin-left:0.8em;
+        padding-top:0.2em;
         display:inline-block;
     }
 

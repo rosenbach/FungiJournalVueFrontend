@@ -46,6 +46,7 @@ export default {
 
 
 .entry-card{
+      margin: 1em;
     background-color:rgb(227, 227, 255);
 }
     .card-navbar{

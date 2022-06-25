@@ -12,10 +12,19 @@ const deleteEntry = async (entryToDelete) => {
     return data;
 }
 
+const putFungi = async (fungiToUpdate) => {
+    const response = await fetch("https://localhost:7038/Fungis/" + fungiToUpdate.entryId, {
+        method: 'PUT',
+        body: JSON.stringify(fungiToUpdate)
+    });
+    const data = await response.json();
+    return data;
+}
 
 const FungiJournalAPIClient = {
     getEntries,
-    deleteEntry
+    deleteEntry,
+    putFungi
 }
 
 export default FungiJournalAPIClient;

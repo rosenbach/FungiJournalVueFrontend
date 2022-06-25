@@ -4,14 +4,15 @@
 export default {
   data(){
     return {
-      isActive : false,
-      buttonText : "🌂"
+      isExpanded : true,
+      buttonText : "🌂",
+      isReadonly : true
     }
   },
   props: {
     fungi:Object,
     fungiId:Number,
-    name:String,
+    commonName:String,
     latinName:String,
     season:String,
     foodValue:Number,
@@ -19,32 +20,49 @@ export default {
   },
   methods:{
         collapseFungiItem(){
-          if(this.isActive){
-            this.isActive = false;
-            this.buttonText = "🌂";
-          }else{
-            this.isActive = true;
+          if(this.isExpanded){
+            this.isExpanded = false;
             this.buttonText = "☂️";
+          }else{
+            this.isExpanded = true;
+            this.buttonText = "🌂";
           }
         }
   }
 }
+
+
 </script>
 
 <template>
         <div class="card fungi-card">
-          <div class="card-navbar" :class="{ hide: isActive }">
+          <div class="card-navbar" :class="{ hide: !isExpanded }">
             <button @click="collapseFungiItem()">{{buttonText}}</button>
             <span class="card-icon"><h3>🍄 Fungi {{fungiId}}</h3></span> 
           </div>
-          <div class="card-content" :class="{ hide: isActive }">
-          <table>
-            <tr><td class="card-label">Name:</td><td> {{ name }}</td></tr>
-            <tr><td class="card-label">LatinName:</td><td> {{ latinName }}</td></tr>
-            <tr><td class="card-label">Season:</td><td> {{ season }}</td></tr>
-            <tr><td class="card-label">FoodValue:</td><td> {{ foodValue }}</td></tr>
-            <tr><td class="card-label">Occurrence:</td><td> {{ occurrence }}</td></tr>
-          </table>
+          <div class="card-content" :class="{ hide: !isExpanded }">
+          <form :action="'https://localhost:7038/Fungis/form/'+fungiId" method="post">
+            <label for="fungiId">FungiId:</label>
+            <input type="text" id="fungiId" name="fungiId" :value="fungiId" readonly><br><br>
+            
+            <label for="commonName">CommonName:</label>
+            <input type="text" id="commonName" name="commonName" :value="commonName"><br><br>
+            <!-- <input type="text" id="commonName" name="commonName" :value="commonName" :readonly="isReadonly" @focusin="setTextInputfieldReadOnly(false)" @focusout="setTextInputfieldReadOnly(true)"><br><br> -->
+
+            <label for="latinName">LatinName:</label>
+            <input type="text" id="latinName" name="latinName" :value="latinName"><br><br>
+
+            <label for="season">Season:</label>
+            <input type="text" id="season" name="season" :value="season"><br><br>
+
+            <label for="foodValue">FoodValue:</label>
+            <input type="text" id="foodValue" name="foodValue" :value="foodValue"><br><br>
+
+            <label for="occurrence">Occurrence:</label>
+            <input type="text" id="occurrence" name="occurrence" :value="occurrence"><br><br>
+
+            <input type="submit" value="Submit">
+          </form>
           </div>
         </div>
 </template>
@@ -61,12 +79,14 @@ export default {
   display:none;
 }
 
-
 button{
     float:left;
     margin-left:0.6em;
 }
 
+input:read-only{
+  background-color: antiquewhite;
+}
 
 .fungi-card > .card-content .hide {
   display:none;
