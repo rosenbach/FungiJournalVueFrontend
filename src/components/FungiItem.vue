@@ -1,5 +1,10 @@
 <!-- FungiItem.vue -->
 <script>
+import fungiJournalAPIClient from "../client/FungiJournalAPIClient";
+
+const putFungi = async (fungiToPut) => {
+    await fungiJournalAPIClient.putFungi(fungiToPut);
+}
 
 export default {
   data(){
@@ -27,6 +32,21 @@ export default {
             this.isExpanded = true;
             this.buttonText = "🌂";
           }
+        },
+        async onSubmit(e){
+          e.preventDefault();
+          const data = new FormData(e.target);
+
+          const fungi = {
+            fungiId: data.get("fungiId"),
+            commonName: data.get('commonName'),
+            latinName: data.get('latinName'),
+            season: data.get('season'),
+            foodValue: data.get('foodValue'),
+            occurrence: data.get('occurrence')
+          };
+
+          await putFungi(fungi);
         }
   }
 }
@@ -41,33 +61,34 @@ export default {
             <span class="card-icon"><h3>🍄 Fungi {{fungiId}}</h3></span> 
           </div>
           <div class="card-content" :class="{ hide: !isExpanded }">
-          <form :action="'https://localhost:7038/Fungis/form/'+fungiId" method="post">
+          <!-- <form :action="'https://localhost:7038/Fungis/form/'+fungiId" method="post"> -->
+          <form @submit="onSubmit($event)">
             <label for="fungiId">FungiId:</label>
-            <input type="text" id="fungiId" name="fungiId" :value="fungiId" readonly><br><br>
+            <input type="number" id="fungiId" name="fungiId" :value="fungiId" readonly><br><br>
             
             <label for="commonName">CommonName:</label>
-            <input type="text" id="commonName" name="commonName" :value="commonName"><br><br>
+            <input type="text" id="commonName" name="commonName" :value="commonName" maxlength="200"><br><br>
             <!-- <input type="text" id="commonName" name="commonName" :value="commonName" :readonly="isReadonly" @focusin="setTextInputfieldReadOnly(false)" @focusout="setTextInputfieldReadOnly(true)"><br><br> -->
 
             <label for="latinName">LatinName:</label>
-            <input type="text" id="latinName" name="latinName" :value="latinName"><br><br>
+            <input type="text" id="latinName" name="latinName" :value="latinName" maxlength="200"><br><br>
 
             <label for="season">Season:</label>
-            <input type="text" id="season" name="season" :value="season"><br><br>
+            <input type="text" id="season" name="season" :value="season" maxlength="200"><br><br>
 
             <label for="foodValue">FoodValue:</label>
-            <input type="text" id="foodValue" name="foodValue" :value="foodValue"><br><br>
+            <input type="number" id="foodValue" name="foodValue" :value="foodValue" min="0" max="5" pattern="/[0-5]/"><br><br>
 
             <label for="occurrence">Occurrence:</label>
-            <input type="text" id="occurrence" name="occurrence" :value="occurrence"><br><br>
-
-            <input type="submit" value="Submit">
+            <input type="text" id="occurrence" name="occurrence" :value="occurrence" maxlength="400"><br><br>
+            <input class="button" type="submit" value="Submit">
           </form>
           </div>
         </div>
 </template>
 
 <style scoped>
+
 .card-navbar.hide{
   box-shadow: none;
   border-bottom-left-radius: 0.5em;
@@ -82,6 +103,14 @@ export default {
 button{
     float:left;
     margin-left:0.6em;
+}
+
+form > input.button{
+    float:inherit;
+    border-radius: inherit;
+    height: inherit;
+    width: inherit;
+    border-radius: 10px;
 }
 
 input:read-only{

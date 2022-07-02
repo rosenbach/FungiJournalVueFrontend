@@ -51,6 +51,21 @@ body{
     .card-content{
         padding:1em;
     }
+
+    .button{        
+        transition: all 20ms ease-in-out;
+        font-size: large;
+        border-radius: 50%;
+        box-shadow: 3px 3px;
+        position:relative;
+        float: right;
+        margin-right:0.8em;
+        margin-top: 0.6em;
+        width:2.7em;
+        height:2.7em;
+        background-color: white;
+        border: 2px solid;
+    }
     
     button {
         transition: all 20ms ease-in-out;

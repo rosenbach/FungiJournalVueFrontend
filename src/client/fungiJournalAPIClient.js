@@ -13,9 +13,14 @@ const deleteEntry = async (entryToDelete) => {
 }
 
 const putFungi = async (fungiToUpdate) => {
-    const response = await fetch("https://localhost:7038/Fungis/" + fungiToUpdate.entryId, {
+    const response = await fetch("https://localhost:7038/Fungis/" + fungiToUpdate.fungiId, {
         method: 'PUT',
         body: JSON.stringify(fungiToUpdate)
+        ,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
     });
     const data = await response.json();
     return data;
