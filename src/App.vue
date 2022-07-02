@@ -103,6 +103,14 @@ body{
         cursor: pointer;
     }
 
+    input.button{
+        float:inherit;
+        border-radius: inherit;
+        height: inherit;
+        width: inherit;
+        border-radius: 10px;
+    }
+
     button:hover{
         border: 3px solid;
         cursor: pointer;

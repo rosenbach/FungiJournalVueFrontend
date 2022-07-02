@@ -76,7 +76,7 @@ export default {
 
             <label for="occurrence">Occurrence:</label>
             <input type="text" id="occurrence" name="occurrence" :value="occurrence" maxlength="400"><br><br>
-            <input class="button" type="submit" value="Submit">
+            <input class="button" type="submit" value="Submit 🍄">
           </form>
           </div>
         </div>
@@ -100,13 +100,7 @@ button{
     margin-left:0.6em;
 }
 
-form > input.button{
-    float:inherit;
-    border-radius: inherit;
-    height: inherit;
-    width: inherit;
-    border-radius: 10px;
-}
+
 
 input:read-only{
   background-color: antiquewhite;
@@ -114,6 +108,14 @@ input:read-only{
 
 input.button:read-only{
   background-color: white;
+}
+
+form > input.button{
+    float:inherit;
+    border-radius: inherit;
+    height: inherit;
+    width: inherit;
+    border-radius: 10px;
 }
 
 .fungi-card > .card-content .hide {
@@ -126,6 +128,7 @@ input.button:read-only{
 
 .fungi-card{
   background-color:rgb(255, 196, 190);
+  margin:1em;
 }
 
 .card-navbar{

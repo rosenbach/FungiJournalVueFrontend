@@ -12,6 +12,20 @@ const deleteEntry = async (entryToDelete) => {
     return data;
 }
 
+const putEntry = async (entryToUpdate) => {
+    const response = await fetch("https://localhost:7038/Entries/" + entryToUpdate.entryId, {
+        method: 'PUT',
+        body: JSON.stringify(entryToUpdate)
+        ,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    });
+    const data = await response.json();
+    return data;
+}
+
 const putFungi = async (fungiToUpdate) => {
     const response = await fetch("https://localhost:7038/Fungis/" + fungiToUpdate.fungiId, {
         method: 'PUT',
@@ -29,6 +43,7 @@ const putFungi = async (fungiToUpdate) => {
 const FungiJournalAPIClient = {
     getEntries,
     deleteEntry,
+    putEntry,
     putFungi
 }
 
