@@ -3,7 +3,6 @@ import fungiJournalAPIClient from "../client/FungiJournalAPIClient";
 import FungiItem from "./FungiItem.vue";
 import EntryMapper from "../services/EntryMapper.js";
 
-
 export default {
     name: "entry",
     props:{
@@ -22,10 +21,9 @@ export default {
             return EntryMapper.createViewDate(date);
         },
         async onSubmit(e){
-          e.preventDefault();
-          const data = new FormData(e.target);
+            e.preventDefault();
+            const data = new FormData(e.target);
 
-          //create a new entry object from the form data
             const entry = {
                 entryId: data.get("entryId"),
                 createdAt: data.get('createdAt'),
@@ -34,7 +32,7 @@ export default {
                 description: data.get('description')
             };
 
-          await fungiJournalAPIClient.putEntry(entry);
+            await fungiJournalAPIClient.putEntry(entry);
         }
     }
 }
@@ -48,20 +46,14 @@ export default {
                 <button @click="$emit('delete-entry')">❌</button>
             </div>
         <div class="card-content">
-            <!-- create a form for the description-->
             <form @submit="onSubmit($event)">
             <label for="Description">Description:</label>
             <input type="text" id="description" name="description" :value="description"><br><br>
 
-            <!-- create the rest of the form as hidden fields-->
             <input type="hidden" id="entryId" name="entryId" :value="entryId">
             <input type="hidden" id="createdAt" name="createdAt" :value="createdAt">
             <input type="hidden" id="lastModified" name="lastModified" :value="lastModified">
             <input type="hidden" id="fungiId" name="fungiId" :value="fungiId">
-            
-
-
-
 
             <input class="button" type="submit" value="Submit 📝">
             </form>
