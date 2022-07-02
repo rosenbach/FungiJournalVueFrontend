@@ -31,12 +31,12 @@ export default {
                 <button @click="$emit('delete-entry')">❌</button>
             </div>
         <div class="card-content">
-          <table>
-              <tr><td class="card-label">Description:</td><td> {{ description }}</td></tr>
-            <tr><td class="card-label">Fungi:</td><td>
-                <fungi-item v-bind="fungi"/>
-            </td></tr>
-          </table>
+            <!-- create a form for the description-->
+                      <form @submit="onSubmit($event)">
+            <label for="Description">Description:</label>
+            <input type="text" id="description" name="description" :value="description"><br><br>
+            </form>
+            <fungi-item v-bind="fungi"/>
           </div>
     </div>
     </li>
