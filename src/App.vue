@@ -17,11 +17,12 @@ export default {
 
 .card-label {
   font-weight: bold;
+  display:inline-block;
+  vertical-align:top;
 }
 
 .card {
   text-align: left;
-  margin: 1em;
   border: 2px solid;
   border-radius: 0.5em;
   box-shadow: 5px 10px;
@@ -43,11 +44,27 @@ body{
 
     .card-icon{
         margin-left:0.8em;
+        padding-top:0.2em;
         display:inline-block;
     }
 
     .card-content{
         padding:1em;
+    }
+
+    .button{        
+        transition: all 20ms ease-in-out;
+        font-size: large;
+        border-radius: 50%;
+        box-shadow: 3px 3px;
+        position:relative;
+        float: right;
+        margin-right:0.8em;
+        margin-top: 0.6em;
+        width:2.7em;
+        height:2.7em;
+        background-color: white;
+        border: 2px solid;
     }
     
     button {
@@ -65,6 +82,14 @@ body{
         border: 2px solid;
     }
 
+    .button:active{
+        background-color:gray;
+        box-shadow: 0px 0px;
+        position:relative;
+        top:3px;
+        left:3px;
+    }
+
     button:active{
         background-color:gray;
         box-shadow: 0px 0px;
@@ -73,10 +98,22 @@ body{
         left:3px;
     }
 
+    .button:hover{
+        border: 2px solid;
+        cursor: pointer;
+    }
+
+    input.button{
+        float:inherit;
+        border-radius: inherit;
+        height: inherit;
+        width: inherit;
+        border-radius: 10px;
+    }
+
     button:hover{
         border: 3px solid;
         cursor: pointer;
-        /* box-shadow: 3px 3px, inset 0 0 0.4em; */
     }
     .entry-card{
         background-color:antiquewhite;
