@@ -117,6 +117,10 @@ input:read-only{
   background-color: antiquewhite;
 }
 
+input.button:read-only{
+  background-color: white;
+}
+
 .fungi-card > .card-content .hide {
   display:none;
 }

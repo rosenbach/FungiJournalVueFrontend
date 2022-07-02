@@ -82,6 +82,14 @@ body{
         border: 2px solid;
     }
 
+    .button:active{
+        background-color:gray;
+        box-shadow: 0px 0px;
+        position:relative;
+        top:3px;
+        left:3px;
+    }
+
     button:active{
         background-color:gray;
         box-shadow: 0px 0px;
@@ -90,10 +98,14 @@ body{
         left:3px;
     }
 
+    .button:hover{
+        border: 2px solid;
+        cursor: pointer;
+    }
+
     button:hover{
         border: 3px solid;
         cursor: pointer;
-        /* box-shadow: 3px 3px, inset 0 0 0.4em; */
     }
     .entry-card{
         background-color:antiquewhite;
