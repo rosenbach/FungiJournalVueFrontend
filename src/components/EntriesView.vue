@@ -3,10 +3,6 @@ import fungiJournalAPIClient from "../client/FungiJournalAPIClient";
 import Entry from "./Entry.vue";
 
 
-const deleteInDatabase = async (entryToDelete) => {
-    await fungiJournalAPIClient.deleteEntry(entryToDelete);
-}
-
 export default {
     name: "entries-view",
     data() {
@@ -17,9 +13,8 @@ export default {
     methods:{
         async deleteThisEntry(entryToDelete, entries) {
             entries.splice(entries.indexOf(entryToDelete), 1);
-            await this.deleteInDatabase(entryToDelete);
-        },
-        deleteInDatabase
+            await fungiJournalAPIClient.deleteEntry(entryToDelete);
+        }        
     },
     async created() {
         await fungiJournalAPIClient.getEntries()

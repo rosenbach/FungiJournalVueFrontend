@@ -2,10 +2,6 @@
 <script>
 import fungiJournalAPIClient from "../client/FungiJournalAPIClient";
 
-const putFungi = async (fungiToPut) => {
-    await fungiJournalAPIClient.putFungi(fungiToPut);
-}
-
 export default {
   data(){
     return {
@@ -46,7 +42,7 @@ export default {
             occurrence: data.get('occurrence')
           };
 
-          await putFungi(fungi);
+          await fungiJournalAPIClient.putFungi(fungi);
         }
   }
 }
@@ -61,7 +57,6 @@ export default {
             <span class="card-icon"><h3>🍄 Fungi {{fungiId}}</h3></span> 
           </div>
           <div class="card-content" :class="{ hide: !isExpanded }">
-          <!-- <form :action="'https://localhost:7038/Fungis/form/'+fungiId" method="post"> -->
           <form @submit="onSubmit($event)">
             <label for="fungiId">FungiId:</label>
             <input type="number" id="fungiId" name="fungiId" :value="fungiId" readonly><br><br>
